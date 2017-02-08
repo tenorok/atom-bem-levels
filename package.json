@@ -1,0 +1,30 @@
+{
+  "name": "bem-levels",
+  "main": "./lib/bem-levels",
+  "version": "0.1.0",
+  "description": "Search and open BEM blocks and elements in order of levels.",
+  "keywords": [
+      "bem",
+      "open"
+  ],
+  "configSchema": {
+    "^[\\w-]+$": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "repository": "https://github.com/tenorok/atom-bem-levels",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.2.0",
+    "bem-config": "^3.1.0",
+    "bem-walk": "^1.0.0-1"
+  }
+}
