@@ -3,6 +3,7 @@
 import path from 'path';
 import { assert } from 'chai';
 import sinon from 'sinon';
+import { Disposable } from 'atom';
 import BemLevelsView from '../lib/bem-levels-view';
 
 describe('BemLevelsView', () => {
@@ -20,6 +21,7 @@ describe('BemLevelsView', () => {
 
     beforeEach(() => {
         bemLevelsView = new BemLevelsView();
+        bemLevelsView.setIconsService(() => new Disposable());
         bemLevelsView.show(levels);
 
         sandbox = sinon.sandbox.create();
@@ -41,7 +43,9 @@ describe('BemLevelsView', () => {
                 assert.deepEqual(bemLevelsView._lastList, [
                     'spec/fixtures/lib1/common.blocks/a/a.js',
                     'spec/fixtures/lib1/desktop.blocks/a/a.js',
+                    'spec/fixtures/lib2/touch.blocks/a/a.css',
                     'spec/fixtures/lib2/touch.blocks/a/a.js',
+                    'spec/fixtures/common.blocks/a/a.css',
                     'spec/fixtures/common.blocks/a/a.js'
                 ]);
                 done();
