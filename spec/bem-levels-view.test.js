@@ -47,12 +47,38 @@ describe('BemLevelsView', () => {
             sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a');
             bemLevelsView.populateList().on('end', () => {
                 assert.deepEqual(bemLevelsView._lastList, [
+                    'spec/fixtures/lib1/common.blocks/a/a.bemhtml.js',
                     'spec/fixtures/lib1/common.blocks/a/a.js',
                     'spec/fixtures/lib1/desktop.blocks/a/a.js',
+                    'spec/fixtures/lib2/touch.blocks/a/a.bemhtml.js',
                     'spec/fixtures/lib2/touch.blocks/a/a.css',
                     'spec/fixtures/lib2/touch.blocks/a/a.js',
                     'spec/fixtures/common.blocks/a/a.css',
                     'spec/fixtures/common.blocks/a/a.js'
+                ]);
+                done();
+            });
+        });
+
+        it('searching of block "a" only in "js" technology', (done) => {
+            sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a.js');
+            bemLevelsView.populateList().on('end', () => {
+                assert.deepEqual(bemLevelsView._lastList, [
+                    'spec/fixtures/lib1/common.blocks/a/a.js',
+                    'spec/fixtures/lib1/desktop.blocks/a/a.js',
+                    'spec/fixtures/lib2/touch.blocks/a/a.js',
+                    'spec/fixtures/common.blocks/a/a.js'
+                ]);
+                done();
+            });
+        });
+
+        it('searching of block "a" only in "bemhtml.js" technology', (done) => {
+            sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a.bemhtml.js');
+            bemLevelsView.populateList().on('end', () => {
+                assert.deepEqual(bemLevelsView._lastList, [
+                    'spec/fixtures/lib1/common.blocks/a/a.bemhtml.js',
+                    'spec/fixtures/lib2/touch.blocks/a/a.bemhtml.js'
                 ]);
                 done();
             });
