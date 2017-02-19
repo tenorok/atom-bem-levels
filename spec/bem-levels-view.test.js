@@ -22,7 +22,7 @@ describe('BemLevelsView', () => {
     beforeEach(() => {
         bemLevelsView = new BemLevelsView();
         bemLevelsView.setIconsService(() => new Disposable());
-        bemLevelsView.show(levels);
+        bemLevelsView.setLevels(levels);
 
         sandbox = sinon.sandbox.create();
         sandbox.stub(bemLevelsView, 'projectPaths', [path.resolve(__dirname, '..')]);
@@ -32,8 +32,14 @@ describe('BemLevelsView', () => {
         sandbox.restore();
     });
 
-    it('getRelativePath()', () => {
-        assert.strictEqual(bemLevelsView.getRelativePath(__filename), 'spec/bem-levels-view.test.js');
+    describe('getRelativePath()', () => {
+        it('directory', () => {
+            assert.strictEqual(bemLevelsView.getRelativePath(__dirname), 'spec');
+        });
+
+        it('file', () => {
+            assert.strictEqual(bemLevelsView.getRelativePath(__filename), 'spec/bem-levels-view.test.js');
+        });
     });
 
     describe('populateList()', () => {
