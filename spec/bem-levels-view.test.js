@@ -83,5 +83,36 @@ describe('BemLevelsView', () => {
                 done();
             });
         });
+
+        it('searching of element "a__b"', (done) => {
+            sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a__b');
+            bemLevelsView.populateList().on('end', () => {
+                assert.deepEqual(bemLevelsView._lastList, [
+                    'spec/fixtures/lib1/desktop.blocks/a/__b/a__b.css',
+                    'spec/fixtures/common.blocks/a/__b/a__b.css'
+                ]);
+                done();
+            });
+        });
+
+        it('searching of block modifier "a_z_x"', (done) => {
+            sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a_z_x');
+            bemLevelsView.populateList().on('end', () => {
+                assert.deepEqual(bemLevelsView._lastList, [
+                    'spec/fixtures/lib2/common.blocks/a/_z/a_z_x.js'
+                ]);
+                done();
+            });
+        });
+
+        it('searching of element modifier "a__b_z_x"', (done) => {
+            sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a__b_z_x');
+            bemLevelsView.populateList().on('end', () => {
+                assert.deepEqual(bemLevelsView._lastList, [
+                    'spec/fixtures/lib1/desktop.blocks/a/__b/_z/a__b_z_x.css'
+                ]);
+                done();
+            });
+        });
     });
 });
