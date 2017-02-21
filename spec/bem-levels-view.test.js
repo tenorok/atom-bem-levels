@@ -1,10 +1,13 @@
 'use babel';
 
 import path from 'path';
-import { assert } from 'chai';
+import { config, assert } from 'chai';
 import sinon from 'sinon';
 import { Disposable } from 'atom';
 import BemLevelsView from '../lib/bem-levels-view';
+
+// For complete diff between two arrays.
+config.truncateThreshold = 0;
 
 describe('BemLevelsView', () => {
     const levels = [
@@ -113,6 +116,52 @@ describe('BemLevelsView', () => {
                 ]);
                 done();
             });
+        });
+    });
+
+    describe('show()', () => {
+        beforeEach(() => {
+            sandbox.stub(bemLevelsView, '_lastQuery', 'last-file.js');
+        });
+
+        it('should set name of active file to the search input', () => {
+            sandbox.stub(atom.workspace, 'getActivePaneItem', () => {
+                return { buffer: { file: { path: '/path/to/a__b.css' }}};
+            });
+            bemLevelsView.show();
+            assert.strictEqual(bemLevelsView.filterEditorView.getText(), 'a__b.css');
+        });
+
+        it('should set last query when active file name is ".gitignore"', () => {
+            sandbox.stub(atom.workspace, 'getActivePaneItem', () => {
+                return { buffer: { file: { path: '/path/to/.gitignore' }}};
+            });
+            bemLevelsView.show();
+            assert.strictEqual(bemLevelsView.filterEditorView.getText(), 'last-file.js');
+        });
+
+        it('should set last query when active file name is ".bemhint.js"', () => {
+            sandbox.stub(atom.workspace, 'getActivePaneItem', () => {
+                return { buffer: { file: { path: '/path/to/.bemhint.js' }}};
+            });
+            bemLevelsView.show();
+            assert.strictEqual(bemLevelsView.filterEditorView.getText(), 'last-file.js');
+        });
+
+        it('should set last query when active file name is "Makefile"', () => {
+            sandbox.stub(atom.workspace, 'getActivePaneItem', () => {
+                return { buffer: { file: { path: '/path/to/Makefile' }}};
+            });
+            bemLevelsView.show();
+            assert.strictEqual(bemLevelsView.filterEditorView.getText(), 'last-file.js');
+        });
+
+        it('should set last query when active file name is "*.json"', () => {
+            sandbox.stub(atom.workspace, 'getActivePaneItem', () => {
+                return { buffer: { file: { path: '/path/to/package.json' }}};
+            });
+            bemLevelsView.show();
+            assert.strictEqual(bemLevelsView.filterEditorView.getText(), 'last-file.js');
         });
     });
 });
