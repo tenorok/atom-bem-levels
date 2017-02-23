@@ -39,7 +39,9 @@
   "devDependencies": {
     "atom-mocha-test-runner": "^1.0.0",
     "chai": "^3.5.0",
+    "flow-bin": "^0.39.0",
     "fs-plus": "^2.9.3",
+    "git-hooks": "^1.1.8",
     "sinon": "^1.17.7"
   }
 }

@@ -1,0 +1,4 @@
+/**
+ * @see https://github.com/file-icons/atom/blob/v2.0.15/lib/service/icon-service.js#L30
+ */
+declare function fileIcons$addIconToElement(element: HTMLElement, path: string, options?: Object): Object;
