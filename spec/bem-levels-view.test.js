@@ -49,7 +49,7 @@ describe('BemLevelsView', () => {
         it('searching of block "a"', (done) => {
             sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a');
             bemLevelsView.populateList().on('end', () => {
-                assert.deepEqual(bemLevelsView._lastList.map(item => item.filePath), [
+                assert.deepEqual(bemLevelsView._lastList.map(item => item.relativeFilePath), [
                     'spec/fixtures/lib1/common.blocks/a/a.bemhtml.js',
                     'spec/fixtures/lib1/common.blocks/a/a.js',
                     'spec/fixtures/lib1/desktop.blocks/a/a.js',
@@ -67,7 +67,7 @@ describe('BemLevelsView', () => {
         it('searching of block "a" only in "js" technology', (done) => {
             sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a.js');
             bemLevelsView.populateList().on('end', () => {
-                assert.deepEqual(bemLevelsView._lastList.map(item => item.filePath), [
+                assert.deepEqual(bemLevelsView._lastList.map(item => item.relativeFilePath), [
                     'spec/fixtures/lib1/common.blocks/a/a.js',
                     'spec/fixtures/lib1/desktop.blocks/a/a.js',
                     'spec/fixtures/lib2/touch.blocks/a/a.js',
@@ -80,7 +80,7 @@ describe('BemLevelsView', () => {
         it('searching of block "a" only in "bemhtml.js" technology', (done) => {
             sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a.bemhtml.js');
             bemLevelsView.populateList().on('end', () => {
-                assert.deepEqual(bemLevelsView._lastList.map(item => item.filePath), [
+                assert.deepEqual(bemLevelsView._lastList.map(item => item.relativeFilePath), [
                     'spec/fixtures/lib1/common.blocks/a/a.bemhtml.js',
                     'spec/fixtures/lib2/touch.blocks/a/a.bemhtml.js'
                 ]);
@@ -91,7 +91,7 @@ describe('BemLevelsView', () => {
         it('searching of element "a__b"', (done) => {
             sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a__b');
             bemLevelsView.populateList().on('end', () => {
-                assert.deepEqual(bemLevelsView._lastList.map(item => item.filePath), [
+                assert.deepEqual(bemLevelsView._lastList.map(item => item.relativeFilePath), [
                     'spec/fixtures/lib1/desktop.blocks/a/__b/a__b.css',
                     'spec/fixtures/common.blocks/a/__b/a__b.css'
                 ]);
@@ -102,7 +102,7 @@ describe('BemLevelsView', () => {
         it('searching of block modifier "a_z_x"', (done) => {
             sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a_z_x');
             bemLevelsView.populateList().on('end', () => {
-                assert.deepEqual(bemLevelsView._lastList.map(item => item.filePath), [
+                assert.deepEqual(bemLevelsView._lastList.map(item => item.relativeFilePath), [
                     'spec/fixtures/lib2/common.blocks/a/_z/a_z_x.js'
                 ]);
                 done();
@@ -112,7 +112,7 @@ describe('BemLevelsView', () => {
         it('searching of element modifier "a__b_z_x"', (done) => {
             sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a__b_z_x');
             bemLevelsView.populateList().on('end', () => {
-                assert.deepEqual(bemLevelsView._lastList.map(item => item.filePath), [
+                assert.deepEqual(bemLevelsView._lastList.map(item => item.relativeFilePath), [
                     'spec/fixtures/lib1/desktop.blocks/a/__b/_z/a__b_z_x.css'
                 ]);
                 done();
