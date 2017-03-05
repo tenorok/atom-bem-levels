@@ -58,6 +58,7 @@ describe('BemLevelsView', () => {
                     'spec/fixtures/lib2/touch.blocks/a/a.js',
                     'spec/fixtures/common.blocks/a/a.css',
                     'spec/fixtures/common.blocks/a/a.js',
+                    'spec/fixtures/common.blocks/a/a.priv.js',
                     'spec/fixtures/touch-phone.blocks/a/a.deps.js'
                 ]);
                 done();
