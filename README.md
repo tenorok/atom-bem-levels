@@ -6,7 +6,7 @@ Handy search BEM-entities from project levels for Atom.
 
 [Atom](https://atom.io/) is a text editor for development.
 
-[BEM](https://en.bem.info) is a component-based approach to web development.
+[BEM](https://en.bem.info) is a component-based approach for web development.
 
 ![Bem-levels in action](https://github.com/tenorok/atom-bem-levels/raw/master/preview.gif)
 
@@ -73,7 +73,7 @@ Example of `~/.atom/keymap.cson`:
 
 ### Used packages
 
-Package [bem-walk](https://github.com/bem-sdk/bem-walk) used for work with BEM file structure. Packages [@bem/naming](https://github.com/bem-sdk/bem-naming) and [@bem/entity-name](https://github.com/bem-sdk/bem-entity-name) used for work with BEM entities.
+Package [@bem/walk](https://github.com/bem-sdk/bem-walk) used for work with BEM file structure. Packages [@bem/naming](https://github.com/bem-sdk/bem-naming) and [@bem/entity-name](https://github.com/bem-sdk/bem-entity-name) used for work with BEM entities.
 
 Atom package [file-icons](https://atom.io/packages/file-icons) used for create file icons to list.
 
