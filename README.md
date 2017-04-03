@@ -2,7 +2,7 @@
 
 [![apm](https://img.shields.io/apm/v/bem-levels.svg?style=flat-square)](https://atom.io/packages/bem-levels)
 
-Handy search BEM-entities from project levels for Atom
+Handy search BEM-entities from project levels for Atom.
 
 [Atom](https://atom.io/) is a text editor for development.
 
