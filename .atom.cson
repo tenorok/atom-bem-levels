@@ -8,3 +8,7 @@
       'spec/fixtures/common.blocks/'
       'spec/fixtures/touch-phone.blocks/'
     ]
+    'project2': [
+      'spec/fixtures/common.blocks/'
+      'spec/fixtures/touch-phone.blocks/'
+    ]
