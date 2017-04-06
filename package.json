@@ -1,7 +1,7 @@
 {
   "name": "bem-levels",
   "main": "./lib/bem-levels",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Search and open BEM blocks and elements in order of levels.",
   "keywords": [
     "bem",
@@ -12,7 +12,6 @@
       "type": "string",
       "title": "Techs of files for searching",
       "description": "Regexp for match extensions ('js', 'bemhtml.js', etc) of files.",
-      "type": "string",
       "default": ".*"
     },
     "levels": {
