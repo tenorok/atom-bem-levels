@@ -39,13 +39,14 @@ Example of `.atom.cson` in project root:
 ```cson
 "*":
   'bem-levels':
-    'touch': [
-      'lib1/common.blocks/'
-      'lib1/touch.blocks/'
-      'lib2/touch.blocks/'
-      'common.blocks/'
-      'touch.blocks/'
-    ]
+    'levels':
+      'touch': [
+        'lib1/common.blocks/'
+        'lib1/touch.blocks/'
+        'lib2/touch.blocks/'
+        'common.blocks/'
+        'touch.blocks/'
+      ]
 ```
 
 In example above specified that for any file (`*`), package `bem-levels` has group `touch`, which consists of levels list.
@@ -58,6 +59,25 @@ Example of `~/.atom/keymap.cson`:
 ```cson
 'atom-workspace':
   'shift-cmd-i': 'bem-levels:touch'
+```
+
+## Options
+
+Schema of all options is stored in the property `configSchema` from `package.json`.
+
+### targetTechs
+
+Sets the technologies of files for searching.
+
+In fact it is regexp for match extensions (`js`, `bemhtml.js`, etc) of files.
+
+Default: `.*`
+
+Example of searching only `*.js` and `*.bemhtml.js` files:
+```cson
+"*":
+  'bem-levels':
+    'targetTechs': '^js|bemhtml.js'
 ```
 
 ## Development details

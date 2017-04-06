@@ -8,13 +8,25 @@
     "open"
   ],
   "configSchema": {
-    "^[\\w-]+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "minItems": 1,
-      "uniqueItems": true
+    "targetTechs": {
+      "type": "string",
+      "title": "Techs of files for searching",
+      "description": "Regexp for match extensions ('js', 'bemhtml.js', etc) of files.",
+      "type": "string",
+      "default": ".*"
+    },
+    "levels": {
+      "type": "object",
+      "properties": {
+        "^[\\w-]+$": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
     }
   },
   "repository": "https://github.com/tenorok/atom-bem-levels",

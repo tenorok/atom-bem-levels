@@ -10,7 +10,7 @@ describe('BemLevels', () => {
 
     beforeEach((done) => {
         sandbox = sinon.sandbox.create();
-        sandbox.stub(atom.config, 'get').withArgs('bem-levels').returns({ project: [] });
+        sandbox.stub(atom.config, 'get').withArgs('bem-levels.levels').returns({ project: [] });
 
         workspaceElement = atom.views.getView(atom.workspace);
         $('body').append(workspaceElement);

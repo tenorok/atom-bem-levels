@@ -66,7 +66,8 @@ describe('BemLevelsView', () => {
                     'spec/fixtures/common.blocks/a/a.css',
                     'spec/fixtures/common.blocks/a/a.js',
                     'spec/fixtures/common.blocks/a/a.priv.js',
-                    'spec/fixtures/touch-phone.blocks/a/a.deps.js'
+                    'spec/fixtures/touch-phone.blocks/a/a.deps.js',
+                    'spec/fixtures/touch-phone.blocks/a/a.test.js'
                 ]);
                 done();
             });
@@ -80,7 +81,8 @@ describe('BemLevelsView', () => {
                     'spec/fixtures/common.blocks/a/a.css',
                     'spec/fixtures/common.blocks/a/a.js',
                     'spec/fixtures/common.blocks/a/a.priv.js',
-                    'spec/fixtures/touch-phone.blocks/a/a.deps.js'
+                    'spec/fixtures/touch-phone.blocks/a/a.deps.js',
+                    'spec/fixtures/touch-phone.blocks/a/a.test.js'
                 ]);
                 done();
             });
@@ -190,6 +192,66 @@ describe('BemLevelsView', () => {
             });
             bemLevelsView.show();
             assert.strictEqual(bemLevelsView.filterEditorView.getText(), 'last-file.js');
+        });
+    });
+
+    describe('option targetTechs', () => {
+        beforeEach(() => {
+            bemLevelsView._lastProject = 'project-first';
+        });
+
+        it('with value "css"', (done) => {
+            sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a');
+            bemLevelsView.setTargetTechs('css');
+            bemLevelsView.populateList().on('end', () => {
+                assert.deepEqual(bemLevelsView._lastList.map(item => item.relativeFilePath), [
+                    'spec/fixtures/lib2/touch.blocks/a/a.css',
+                    'spec/fixtures/common.blocks/a/a.css'
+                ]);
+                done();
+            });
+        });
+
+        it('with value "bemhtml.js"', (done) => {
+            sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a');
+            bemLevelsView.setTargetTechs('bemhtml.js');
+            bemLevelsView.populateList().on('end', () => {
+                assert.deepEqual(bemLevelsView._lastList.map(item => item.relativeFilePath), [
+                    'spec/fixtures/lib1/common.blocks/a/a.bemhtml.js',
+                    'spec/fixtures/lib2/touch.blocks/a/a.bemhtml.js'
+                ]);
+                done();
+            });
+        });
+
+        it('with value "css|bemhtml.js"', (done) => {
+            sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a');
+            bemLevelsView.setTargetTechs('css|bemhtml.js');
+            bemLevelsView.populateList().on('end', () => {
+                assert.deepEqual(bemLevelsView._lastList.map(item => item.relativeFilePath), [
+                    'spec/fixtures/lib1/common.blocks/a/a.bemhtml.js',
+                    'spec/fixtures/lib2/touch.blocks/a/a.bemhtml.js',
+                    'spec/fixtures/lib2/touch.blocks/a/a.css',
+                    'spec/fixtures/common.blocks/a/a.css'
+                ]);
+                done();
+            });
+        });
+
+        it('with value "^js|bemhtml.js"', (done) => {
+            sandbox.stub(bemLevelsView, 'getFilterQuery', () => 'a');
+            bemLevelsView.setTargetTechs('^js|bemhtml.js');
+            bemLevelsView.populateList().on('end', () => {
+                assert.deepEqual(bemLevelsView._lastList.map(item => item.relativeFilePath), [
+                    'spec/fixtures/lib1/common.blocks/a/a.bemhtml.js',
+                    'spec/fixtures/lib1/common.blocks/a/a.js',
+                    'spec/fixtures/lib1/desktop.blocks/a/a.js',
+                    'spec/fixtures/lib2/touch.blocks/a/a.bemhtml.js',
+                    'spec/fixtures/lib2/touch.blocks/a/a.js',
+                    'spec/fixtures/common.blocks/a/a.js'
+                ]);
+                done();
+            });
         });
     });
 });

@@ -1,14 +1,15 @@
 "*":
   'bem-levels':
-    'project1': [
-      'spec/fixtures/lib1/common.blocks/'
-      'spec/fixtures/lib1/desktop.blocks/'
-      'spec/fixtures/lib2/common.blocks/'
-      'spec/fixtures/lib2/touch.blocks/'
-      'spec/fixtures/common.blocks/'
-      'spec/fixtures/touch-phone.blocks/'
-    ]
-    'project2': [
-      'spec/fixtures/common.blocks/'
-      'spec/fixtures/touch-phone.blocks/'
-    ]
+    'levels':
+      'project1': [
+        'spec/fixtures/lib1/common.blocks/'
+        'spec/fixtures/lib1/desktop.blocks/'
+        'spec/fixtures/lib2/common.blocks/'
+        'spec/fixtures/lib2/touch.blocks/'
+        'spec/fixtures/common.blocks/'
+        'spec/fixtures/touch-phone.blocks/'
+      ]
+      'project2': [
+        'spec/fixtures/common.blocks/'
+        'spec/fixtures/touch-phone.blocks/'
+      ]
