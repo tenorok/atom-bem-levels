@@ -37,7 +37,7 @@ Format of local config similar to the [Atom global configuration settings](http:
 Example of `.atom.cson` in project root:
 
 ```cson
-"*":
+'*':
   'bem-levels':
     'levels':
       'touch': [
@@ -67,7 +67,7 @@ Schema of all options is stored in the property `configSchema` from `package.jso
 
 ### targetTechs
 
-Sets the technologies of files for searching.
+Sets target technologies of files for searching.
 
 In fact it is regexp for match extensions (`js`, `bemhtml.js`, etc) of files.
 
@@ -75,7 +75,7 @@ Default: `.*`
 
 Example of searching only `*.js` and `*.bemhtml.js` files:
 ```cson
-"*":
+'*':
   'bem-levels':
     'targetTechs': '^js|bemhtml.js'
 ```
