@@ -3,3 +3,11 @@ declare var atom: any;
 declare module 'atom' {
     declare module.exports: any;
 }
+
+/**
+ * @see https://github.com/atom/event-kit/blob/v1.5.0/src/composite-disposable.coffee#L22
+ */
+declare class atom$CompositeDisposable {
+    dispose(): void;
+    add(...disposables: Array<Object>): void;
+}
